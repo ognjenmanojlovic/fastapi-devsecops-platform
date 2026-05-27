@@ -38,7 +38,6 @@
 - [Useful Commands](#useful-commands)
 - [Screenshots](#screenshots)
 - [What I Learned](#what-i-learned)
-- [Possible Future Improvements](#possible-future-improvements)
 - [Conclusion](#conclusion)
 
 ---
@@ -1063,64 +1062,49 @@ cosign verify \
 
 ## Application UI
 
-```md
 ![Application Dashboard](./img/application-dashboard.png)
-```
 
 ---
 
 ## API Documentation
 
-```md
 ![FastAPI Swagger Docs](./img/api-docs.png)
-```
 
 ---
 
 ## GitHub Actions Security Workflow
 
-```md
 ![Security Workflow](./img/security-workflow.png)
-```
+
 ---
 
 ## Trivy Vulnerability Findings
 
-```md
 ![Trivy Findings](./img/trivy-findings.png)
-```
 
 ---
 
 ## GitHub Security Tab
 
-```md
 ![GitHub Security Alerts](./img/github-security-alerts.png)
-```
 
 ---
 
 ## GitHub Container Registry
 
-```md
 ![GHCR Packages](./img/ghcr-packages.png)
-```
 
 ---
 
 ## SBOM Artifacts
 
-```md
 ![SBOM Artifacts](./img/sbom-artifacts.png)
-```
 
 ---
 
 ## Cosign Verification
 
-```md
 ![Cosign Verification](./img/cosign-verification.png)
-```
 
 ---
 
