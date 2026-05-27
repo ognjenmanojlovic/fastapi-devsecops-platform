@@ -35,7 +35,7 @@ jobs:
           ignore-unfixed: true
 
       - name: Build backend Docker image
-        run: docker build -t fastapi-backend:security-scan ./backend
+        run: docker build -t fastapi-backend:security-scan -f backend/Dockerfile .
 
       - name: Run Trivy backend image scan
         uses: aquasecurity/trivy-action@master
