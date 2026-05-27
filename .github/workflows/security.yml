@@ -44,3 +44,14 @@ jobs:
           severity: HIGH,CRITICAL
           ignore-unfixed: true
           exit-code: 0
+
+      - name: Build frontend Docker image
+        run: docker build -t fastapi-frontend:security-scan -f frontend/Dockerfile .
+
+      - name: Run Trivy frontend image scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: fastapi-frontend:security-scan
+          severity: HIGH,CRITICAL
+          ignore-unfixed: true
+          exit-code: 1
