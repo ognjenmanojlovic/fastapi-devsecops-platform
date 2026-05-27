@@ -22,17 +22,34 @@ jobs:
         uses: gitleaks/gitleaks-action@v2
 
       - name: Run Semgrep SAST scan
-        uses: semgrep/semgrep-action@v1
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/src" \
+            returntocorp/semgrep semgrep \
+            --config=auto \
+            --sarif \
+            --output=semgrep.sarif \
+            /src
+
+      - name: Upload Semgrep SARIF results
+        uses: github/codeql-action/upload-sarif@v3
         with:
-          config: auto
+          sarif_file: semgrep.sarif
 
       - name: Run Trivy filesystem scan
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: fs
           scan-ref: .
+          format: sarif
+          output: trivy-results.sarif
           severity: HIGH,CRITICAL
           ignore-unfixed: true
+
+      - name: Upload Trivy SARIF results
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: trivy-results.sarif
 
       - name: Build backend Docker image
         run: docker build -t fastapi-backend:security-scan -f backend/Dockerfile .
