@@ -33,3 +33,14 @@ jobs:
           scan-ref: .
           severity: HIGH,CRITICAL
           ignore-unfixed: true
+
+      - name: Build backend Docker image
+        run: docker build -t fastapi-backend:security-scan ./backend
+
+      - name: Run Trivy backend image scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: fastapi-backend:security-scan
+          severity: HIGH,CRITICAL
+          ignore-unfixed: true
+          exit-code: 1
