@@ -1,7 +1,7 @@
 # FastAPI DevSecOps Platform
 
 <p align="center">
-  <img src="./github-social-preview.png" alt="FastAPI DevSecOps Platform Banner" width="100%">
+  <img src="./img/github-social-preview.png" alt="FastAPI DevSecOps Platform Banner" width="100%">
 </p>
 
 > A modern DevSecOps showcase project based on the official **FastAPI Full Stack Template**, focused on secure CI/CD, automated security scanning, container hardening, software supply chain security, SBOM generation, GitHub Container Registry, and signed Docker images.
@@ -1064,7 +1064,7 @@ cosign verify \
 ## Application UI
 
 ```md
-![Application Dashboard](img/application-dashboard.png)
+![Application Dashboard](./img/application-dashboard.png)
 ```
 
 ---
@@ -1072,7 +1072,7 @@ cosign verify \
 ## API Documentation
 
 ```md
-![FastAPI Swagger Docs](img/api-docs.png)
+![FastAPI Swagger Docs](./img/api-docs.png)
 ```
 
 ---
@@ -1080,14 +1080,14 @@ cosign verify \
 ## GitHub Actions Security Workflow
 
 ```md
-![Security Workflow](img/security-workflow.png)
+![Security Workflow](./img/security-workflow.png)
 ```
 ---
 
 ## Trivy Vulnerability Findings
 
 ```md
-![Trivy Findings](img/trivy-findings.png)
+![Trivy Findings](./img/trivy-findings.png)
 ```
 
 ---
@@ -1095,7 +1095,7 @@ cosign verify \
 ## GitHub Security Tab
 
 ```md
-![GitHub Security Alerts](img/github-security-alerts.png)
+![GitHub Security Alerts](./img/github-security-alerts.png)
 ```
 
 ---
@@ -1103,7 +1103,7 @@ cosign verify \
 ## GitHub Container Registry
 
 ```md
-![GHCR Packages](img/ghcr-packages.png)
+![GHCR Packages](./img/ghcr-packages.png)
 ```
 
 ---
@@ -1111,7 +1111,7 @@ cosign verify \
 ## SBOM Artifacts
 
 ```md
-![SBOM Artifacts](img/sbom-artifacts.png)
+![SBOM Artifacts](./img/sbom-artifacts.png)
 ```
 
 ---
@@ -1119,7 +1119,7 @@ cosign verify \
 ## Cosign Verification
 
 ```md
-![Cosign Verification](img/cosign-verification.png)
+![Cosign Verification](./img/cosign-verification.png)
 ```
 
 ---
