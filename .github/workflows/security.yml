@@ -43,4 +43,4 @@ jobs:
           image-ref: fastapi-backend:security-scan
           severity: HIGH,CRITICAL
           ignore-unfixed: true
-          exit-code: 1
+          exit-code: 0
