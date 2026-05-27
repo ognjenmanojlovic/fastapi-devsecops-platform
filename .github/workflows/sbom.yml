@@ -1,0 +1,48 @@
+name: Generate SBOM
+
+"on":
+  push:
+    branches:
+      - development
+      - main
+  pull_request:
+
+jobs:
+  sbom:
+    name: Generate Software Bill of Materials
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build backend Docker image
+        run: docker build -t fastapi-backend:sbom -f backend/Dockerfile .
+
+      - name: Build frontend Docker image
+        run: docker build -t fastapi-frontend:sbom -f frontend/Dockerfile .
+
+      - name: Generate backend SBOM
+        uses: anchore/sbom-action@v0
+        with:
+          image: fastapi-backend:sbom
+          format: spdx-json
+          output-file: backend-sbom.spdx.json
+
+      - name: Generate frontend SBOM
+        uses: anchore/sbom-action@v0
+        with:
+          image: fastapi-frontend:sbom
+          format: spdx-json
+          output-file: frontend-sbom.spdx.json
+
+      - name: Upload SBOM artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: container-sboms
+          path: |
+            backend-sbom.spdx.json
+            frontend-sbom.spdx.json
