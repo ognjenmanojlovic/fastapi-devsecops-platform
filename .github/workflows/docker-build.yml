@@ -8,12 +8,13 @@ name: Build and Push Docker Images
 
 jobs:
   docker:
-    name: Build and Push Images
+    name: Build, Push and Sign Images
     runs-on: ubuntu-latest
 
     permissions:
       contents: read
       packages: write
+      id-token: write
 
     steps:
       - name: Checkout repository
@@ -26,6 +27,9 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@v3
+
       - name: Build backend image
         run: |
           docker build \
@@ -36,6 +40,10 @@ jobs:
         run: |
           docker push ghcr.io/${{ github.repository_owner }}/fastapi-backend:latest
 
+      - name: Sign backend image
+        run: |
+          cosign sign --yes ghcr.io/${{ github.repository_owner }}/fastapi-backend:latest
+
       - name: Build frontend image
         run: |
           docker build \
@@ -45,3 +53,7 @@ jobs:
       - name: Push frontend image
         run: |
           docker push ghcr.io/${{ github.repository_owner }}/fastapi-frontend:latest
+
+      - name: Sign frontend image
+        run: |
+          cosign sign --yes ghcr.io/${{ github.repository_owner }}/fastapi-frontend:latest
